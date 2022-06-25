@@ -1,0 +1,128 @@
+version: "2.0"
+
+rules:
+- rule: Activate form
+  steps:
+    - intent: recommend_movie
+    - action: movies_form
+    - active_loop: movies_form
+
+- rule: Submit form
+  condition:
+  # Condition that form is active.
+  - active_loop: movies_form
+  steps:
+  # Form is deactivated
+  - action: movies_form
+  - active_loop: null
+  # The actions we want to run when the form is submitted.
+  - action: action_movies_form_submit
+
+- rule: rule_1
+  steps:
+  - intent: movie_search_by_year_and_score
+  - action: action_movies_query
+
+- rule: rule_2
+  steps:
+  - intent: movie_search_by_genre
+  - action: action_movies_query
+
+- rule: rule_3
+  steps:
+  - intent: movie_search_by_duration
+  - action: action_movies_query
+
+- rule: rule_4
+  steps:
+  - intent: movie_search_by_actor
+  - action: action_movies_query
+
+- rule: rule_5
+  steps:
+  - intent: movie_search_by_score
+  - action: action_movies_query
+
+- rule: rule_6
+  steps:
+  - intent: movie_search_by_score_and_country
+  - action: action_movies_query
+
+- rule: rule_7
+  steps:
+  - intent: movie_search_by_movie
+  - action: action_movies_query
+
+- rule: rule_8
+  steps:
+  - intent: movie_search_by_year_and_genre
+  - action: action_movies_query
+
+- rule: rule_9
+  steps:
+  - intent: movie_search_by_year
+  - action: action_movies_query
+
+- rule: rule_10
+  steps:
+  - intent: movie_search_by_country
+  - action: action_movies_query
+
+- rule: rule_11
+  steps:
+  - intent: movie_search_by_year_and_country
+  - action: action_movies_query
+
+- rule: rule_12
+  steps:
+  - intent: movie_search_by_year_and_duration
+  - action: action_movies_query
+
+- rule: rule_13
+  steps:
+  - intent: movie_search_by_score_and_genre
+  - action: action_movies_query
+
+- rule: rule_14
+  steps:
+  - intent: movie_search_by_score_and_actor
+  - action: action_movies_query
+
+- rule: rule_15
+  steps:
+  - intent: movie_search_by_score_and_duration
+  - action: action_movies_query
+
+- rule: rule_16
+  steps:
+  - intent: movie_search_by_genre_and_country
+  - action: action_movies_query
+
+- rule: rule_17
+  steps:
+  - intent: movie_search_by_genre_and_actor
+  - action: action_movies_query
+
+- rule: rule_18
+  steps:
+  - intent: movie_search_by_genre_and_actor
+  - action: action_movies_query
+
+- rule: rule_21
+  steps:
+    - intent: movie_search_by_year_and_actor
+    - action: action_movies_query
+
+- rule: respond to chitchat
+  steps:
+  - intent: chitchat
+  - action: utter_chitchat
+
+- rule: rule_19
+  steps:
+  - intent: bye
+  - action: utter_bye
+- rule: rule_20
+  steps:
+    - intent: greet
+    - action: utter_greet

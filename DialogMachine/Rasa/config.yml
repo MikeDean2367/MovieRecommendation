@@ -1,0 +1,30 @@
+language: zh
+pipeline:
+- name: JiebaTokenizer
+#  dictionary_path: D:/Desktop/课程/创新实践/RecommendationProject/rasa/customDict/dict_no.txt
+  intent_tokenization_flag: false
+  intent_split_symbol: _
+  token_pattern: None
+- name: LanguageModelFeaturizer
+  model_name: bert
+  model_weights: rasa/LaBSE
+  cache_dir: null
+- name: RegexFeaturizer
+  case_sensitive: true
+  use_word_boundaries: false
+- name: DIETClassifier
+  epochs: 100
+  constrain_similarities: true
+- name: EntitySynonymMapper
+- name: ResponseSelector
+  epochs: 100
+  constrain_similarities: true
+- name: ResponseSelector
+  epochs: 100
+  retrieval_intent: chitchat
+- name: FallbackClassifier
+  threshold: 0.3
+  ambiguity_threshold: 0.1
+  fallback_action_name: action_default_fallback
+policies:
+- name: RulePolicy

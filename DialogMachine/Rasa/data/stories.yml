@@ -1,0 +1,182 @@
+version: "2.0"
+
+stories:
+
+- story: happy path
+  steps:
+    - intent: movie_search_by_duration
+    - action: action_movies_query
+
+- story: interactive_story_5
+  steps:
+  - intent: recommend_movie
+  - action: movies_form
+  - active_loop: movies_form
+  - slot_was_set:
+    - requested_slot: country
+  - slot_was_set:
+    - country: 无
+  - slot_was_set:
+    - requested_slot: genre
+  - slot_was_set:
+    - genre: 喜剧
+  - slot_was_set:
+    - genre: null
+  - slot_was_set:
+    - requested_slot: genre
+  - slot_was_set:
+    - genre: 悬疑
+  - slot_was_set:
+    - genre: 悬疑
+  - slot_was_set:
+    - requested_slot: personName
+  - slot_was_set:
+    - personName: 周星驰
+  - slot_was_set:
+    - personName: 周星驰
+  - slot_was_set:
+    - requested_slot: time
+  - slot_was_set:
+    - time: 两个小时以内
+  - slot_was_set:
+    - time: 两个小时以内
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_movies_form_submit
+
+- story: interactive_story_1
+  steps:
+  - intent: recommend_movie
+  - action: movies_form
+  - active_loop: movies_form
+  - slot_was_set:
+    - requested_slot: country
+  - slot_was_set:
+    - country: 无
+  - slot_was_set:
+    - requested_slot: genre
+  - slot_was_set:
+    - genre: 动作
+  - slot_was_set:
+    - genre: 动作
+  - slot_was_set:
+    - requested_slot: personName
+  - slot_was_set:
+    - personName: 陈坤
+  - slot_was_set:
+    - personName: 陈坤
+  - slot_was_set:
+    - requested_slot: time
+  - slot_was_set:
+    - time: 无
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_movies_form_submit
+
+- story: interactive_story_2
+  steps:
+  - intent: movie_search_by_duration
+    entities:
+    - time: 一百到两百分钟左右
+  - slot_was_set:
+    - time: 一百到两百分钟左右
+  - action: action_movies_query
+
+- story: interactive_story_1
+  steps:
+  - intent: movie_search_by_actor
+    entities:
+    - personName: 周星驰
+  - slot_was_set:
+    - personName: 周星驰
+  - action: action_movies_query
+  - intent: movie_search_by_duration
+    entities:
+    - time: 一个小时
+  - slot_was_set:
+    - time: 一个小时
+  - action: action_movies_query
+  - intent: movie_search_by_year_and_actor
+    entities:
+    - year: 上个世纪七八十年代
+    - personName: 成龙
+  - slot_was_set:
+    - year: 上个世纪七八十年代
+  - slot_was_set:
+    - personName: 成龙
+  - action: action_movies_query
+  - intent: recommend_movie
+  - action: movies_form
+  - active_loop: movies_form
+  - slot_was_set:
+    - requested_slot: country
+  - slot_was_set:
+    - country: 中国香港
+  - slot_was_set:
+    - country: 中国香港
+  - slot_was_set:
+    - requested_slot: genre
+  - slot_was_set:
+    - genre: 喜剧
+  - slot_was_set:
+    - genre: 喜剧
+  - slot_was_set:
+    - requested_slot: personName
+  - slot_was_set:
+    - personName: 周星驰
+  - slot_was_set:
+    - personName: 周星驰
+  - slot_was_set:
+    - requested_slot: time
+  - slot_was_set:
+    - time: 100分钟左右
+  - slot_was_set:
+    - time: '1'
+  - slot_was_set:
+    - requested_slot: null
+  - active_loop: null
+  - action: action_movies_form_submit
+  - intent: movie_search_by_duration
+    entities:
+    - time: 100分钟左右
+  - slot_was_set:
+    - time: 100分钟左右
+  - action: action_movies_query
+  - intent: movie_search_by_score_and_genre
+    entities:
+    - score: 评分在7分以上
+    - genre: 悬疑
+  - slot_was_set:
+    - genre: 悬疑
+  - slot_was_set:
+    - score: 评分在7分以上
+  - action: action_movies_query
+  - intent: movie_search_by_score_and_actor
+    entities:
+    - score: 评分较高
+    - personName: 胡军
+  - slot_was_set:
+    - score: 评分较高
+  - slot_was_set:
+    - personName: 胡军
+  - action: action_movies_query
+  - intent: movie_search_by_actor
+    entities:
+    - personName: 小李子
+  - slot_was_set:
+    - personName: 小李子
+  - action: action_movies_query
+  - intent: movie_search_by_score
+    entities:
+    - score: 9分以上
+  - slot_was_set:
+    - score: 9分以上
+  - action: action_movies_query
+  - intent: movie_search_by_score
+    entities:
+    - score: 九分以上
+  - slot_was_set:
+    - score: 九分以上
+  - action: action_movies_query

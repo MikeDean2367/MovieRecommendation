@@ -1,0 +1,254 @@
+version: '2.0'
+config:
+  store_entities_as_slots: true
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+intents:
+- movie_search_by_score_and_actor:
+    use_entities:
+    - score
+    - personName
+- movie_search_by_year_and_actor:
+    use_entities:
+    - year
+    - personName
+- movie_search_by_score:
+    use_entities:
+    - score
+- movie_search_by_duration:
+    use_entities:
+    - time
+- movie_search_by_score_and_genre:
+    use_entities:
+    - score
+    - genre
+- movie_search_by_actor:
+    use_entities:
+    - personName
+- movie_search_by_genre:
+    use_entities:
+    - genre
+- recommend_movie:
+    use_entities: []
+- movie_search_by_country:
+    use_entities:
+    - country
+- deny:
+    use_entities: true
+- movie_search_by_score_and_country:
+    use_entities:
+    - score
+    - country
+- movie_search_by_movie:
+    use_entities:
+    - movieName
+- movie_search_by_year_and_genre:
+    use_entities:
+    - year
+    - genre
+- movie_search_by_year_and_score:
+    use_entities:
+    - movieName
+- movie_search_by_year:
+    use_entities:
+    - year
+- movie_search_by_year_and_country:
+    use_entities:
+    - year
+    - country
+- movie_search_by_year_and_duration:
+    use_entities:
+    - year
+    - time
+- movie_search_by_score_and_duration:
+    use_entities:
+    - score
+    - time
+- movie_search_by_genre_and_country:
+    use_entities:
+    - country
+    - genre
+- movie_search_by_genre_and_duration:
+    use_entities:
+    - time
+    - genre
+- movie_search_by_genre_and_actor:
+    use_entities:
+    - personName
+    - genre
+- chitchat:
+    use_entities: true
+- greet:
+    use_entities: true
+- bye:
+    use_entities: true
+- affirm:
+    use_entities: true
+entities:
+- country
+- genre
+- movieName
+- personName
+- score
+- time
+- year
+slots:
+  country:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  genre:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  year:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  score:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  personName:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  movieName:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  time:
+    type: rasa.shared.core.slots.TextSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+  requested_slot:
+    type: rasa.shared.core.slots.UnfeaturizedSlot
+    initial_value: null
+    auto_fill: true
+    influence_conversation: false
+responses:
+  utter_chitchat/ask_name:
+  - text: 我是影瘾，可以让你对电影上瘾哦~
+  - text: 我的全名是影瘾，我但我不介意你叫我颖颖，或者莹莹、盈盈都行，阿影也可以哦
+  - text: 我是影瘾，名字的含义我相信你一定才出来了吧
+  - text: 我是影瘾，快来和影瘾玩耍吧
+  utter_chitchat/ask_sex:
+  - text: 我当然是一个女孩子啦
+  - text: 人家是女孩子啦
+  - text: 这你都看不出来吗，当然是女孩子啦
+  - text: 我是，我是女孩纸
+  utter_chitchat/ask_genre:
+  - text: 哦吼吼，我的脑子里有39种类别的电影，你可要看仔细咯，接下来我要绕口令了。他们分别是真人秀、爱情、喜剧、历史、戏曲、惊悚、科幻、奇幻、武侠、情色、冒险、音乐、歌舞、剧情、犯罪、荒诞、黑色电影、悬念、家庭、动画、儿童、Reality-TV、纪录片、传记、同性、舞台艺术、悬疑、运动、灾难、古装、动作、惊栗、Comedy、恐怖、Adult、鬼怪、战争、西部、脱口秀
+  - text: 终于有人问我这个问题咯，嘿嘿，你可以仔细看哦，有39种，别眼花缭乱哟，他们分别是真人秀、爱情、喜剧、历史、戏曲、惊悚、科幻、奇幻、武侠、情色、冒险、音乐、歌舞、剧情、犯罪、荒诞、黑色电影、悬念、家庭、动画、儿童、Reality-TV、纪录片、传记、同性、舞台艺术、悬疑、运动、灾难、古装、动作、惊栗、Comedy、恐怖、Adult、鬼怪、战争、西部、脱口秀
+  utter_chitchat/ask_help:
+  - text: 我可是一个看过三万多部电影的人，我可以猜你想看的电影，你可以和我说"你想看电影"，然后你就会发现神奇的一幕啦
+  - text: 问我能干什么，我可是会魔法的哟。试着和我说"给我推荐几部零五年的爱情电影"吧~
+  utter_bye:
+  - text: 拜拜┏(＾0＾)┛，主人记得别忘了来找我呀
+  - text: GOOD BYE~ 期待下次再见呐
+  - text: 又到了说再见的时刻了，我会想念你的，工作之余一定记得放松自己呀！
+  utter_greet:
+  - text: 你好哦~我是影瘾，会让你对电影上瘾哦。你可以试着对我说"我想看电影"，我也可以猜猜你想看什么电影哦~当然了，我还可以有条件的查询，比如"帮我找一下2014年最好看的电影"等
+  - text: 来咯，主人快来看电影吧，我猜你一定很久没有看了吧，最近上映了很多电影哦，你可以和我说"我想看电影"
+  utter_ask_movies_form_genre:
+  - text: 你想看什么类型的电影呢
+  - text: 你是想看悬疑的、爱情的、动作的还是其他的什么电影呢
+  - text: 主人，你喜欢什么类型的电影呢
+  - text: 我这里有好多电影呢，有26类不同的类型，你想看什么类型的呢
+  utter_ask_movies_form_country:
+  - text: 对发行国家有什么要求吗
+  - text: 你希望是哪个国家拍摄的呢
+  - text: 对于哪国电影你有什么要求吗，听说中国的电影最近很好看哦
+  utter_ask_movies_form_personName:
+  - text: 对演员、编剧或者导演等有什么特殊的要求吗
+  - text: 您对电影的演员有什么要求吗，影瘾就比较喜欢看沈腾老师的作品哦，可有趣了
+  - text: 你有什么特别喜欢的演员或者导演吗？如果没有，可以和我说没有哦~
+  utter_ask_movies_form_time:
+  - text: 对电影的时长有没有特别的要求呢
+  - text: 那你对电影的时长有没有要求嘞？如果时间特别赶的话，在娱乐的同时别忘了错过重要的人哦
+  - text: 对于电影时间您有什么要求吗？
+  utter_movie_search_by_year:
+  - text: 查询成功
+  utter_movie_search_by_score:
+  - text: 查询成功
+  utter_movie_search_by_genre:
+  - text: 查询成功
+  utter_movie_search_by_country:
+  - text: 查询成功
+  utter_movie_search_by_duration:
+  - text: 查询成功
+  utter_movie_search_by_actor:
+  - text: 查询成功
+  utter_movie_search_by_year_and_actor:
+  - text: 查询成功
+  utter_movie_search_by_year_and_genre:
+  - text: 查询成功
+  utter_mobie_search_by_year_and_country:
+  - text: 查询成功
+  utter_movie_search_by_year_and_duration:
+  - text: 查询成功
+  utter_movie_search_by_year_and_score:
+  - text: 查询成功
+  utter_movie_search_by_score_and_genre:
+  - text: 查询成功
+  utter_movie_search_by_score_and_actor:
+  - text: 查询成功
+  utter_movie_search_by_score_and_country:
+  - text: 查询成功
+  utter_movie_search_by_score_and_duration:
+  - text: 查询成功
+  utter_movie_search_by_genre_and_country:
+  - text: 查询成功
+  utter_movie_search_by_genre_and_duration:
+  - text: 查询成功
+  utter_movie_search_by_genre_and_actor:
+  - text: 查询成功
+  utter_movie_search_by_movie:
+  - text: 查询成功
+  utter_recommend_movie:
+  - text: 查询成功
+  utter_default:
+  - text: 对不起啦，我没能听懂你的意思呢，请给我时间再学习一下吧~
+actions:
+- action_movies_form_submit
+- action_movies_query
+- utter_movie_search_by_duration
+- validate_movies_form
+forms:
+  movies_form:
+    required_slots:
+      country:
+      - entity: country
+        intent: movie_search_by_country
+        type: from_entity
+      - intent: deny
+        type: from_intent
+        value: 无
+      genre:
+      - entity: genre
+        intent: movie_search_by_genre
+        type: from_entity
+      - intent: deny
+        type: from_intent
+        value: 无
+      personName:
+      - entity: personName
+        type: from_entity
+      - intent: deny
+        type: from_intent
+        value: 无
+      time:
+      - entity: time
+        type: from_entity
+      - intent: deny
+        type: from_intent
+        value: 无
+e2e_actions: []
